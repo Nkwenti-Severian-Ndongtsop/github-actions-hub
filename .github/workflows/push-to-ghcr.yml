@@ -1,9 +1,13 @@
-name: automated package push
+name: automated package push for backend
 
 on:
   push:
     branches:
       - master
+
+env:
+  IMAGE_NAME: flight-api 
+  IMAGE_PATH: nkwenti-severian-ndongtsop
 
 jobs:
   build:
@@ -28,5 +32,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.run_number }}
+            ghcr.io/${{ env.IMAGE_PATH }}/${{ env.IMAGE_NAME }}:latest
